@@ -2,10 +2,15 @@ import Service from "../services/exercicios.js"
 
 class Controller {
     Somar(req, res) {
-        const { num1, num2 } = req.body
-        const resultado = Service.Somar(num1, num2)
+        try{
+            const { num1, num2 } = req.body
+            const resultado = Service.Somar(num1, num2)
         
-        res.status(200).send({ resultado })
+            res.status(200).send({ resultado })
+        } catch(e){
+            console.log(e);
+            res.status(500).send({ err: e.message});
+        }
     }
 
     Subtrair(req, res) {
