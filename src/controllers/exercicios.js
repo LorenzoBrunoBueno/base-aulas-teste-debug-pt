@@ -14,24 +14,66 @@ class Controller {
     }
 
     Subtrair(req, res) {
-        const { num1, num2 } = req.body
-        const resultado = Service.Subtrair(num1, num2)
-        
-        res.status(200).send({ resultado })
+        try {
+            const { num1, num2 } = req.body
+            const resultado = Service.Subtrair(num1, num2)
+            
+            res.status(200).send({ resultado })
+        } catch (e) {
+            console.log(e);
+            res.status(500).send({ err: e.message});
+        }
+
     }
 
     Multiplicar(req, res) {
-        const { num1, num2 } = req.body
-        const resultado = Service.Multiplicar(num1, num2)
-        
-        res.status(200).send({ resultado })
+        try {
+            const { num1, num2 } = req.body
+            const resultado = Service.Multiplicar(num1, num2)
+            
+            res.status(200).send({ resultado })
+        } catch (e) {
+            console.log(e);
+            res.status(500).send({ err: e.message});
+        }
+
     }
 
     Dividir(req, res) {
-        const { num1, num2 } = req.body
-        const resultado = Service.Dividir(num1, num2)
+        try {
+            const { num1, num2 } = req.body
+            const resultado = Service.Dividir(num1, num2)
+            
+            res.status(200).send({ resultado })    
+        } catch (e) {
+            console.log(e);
+            res.status(500).send({ err: e.message});
+        }
         
-        res.status(200).send({ resultado })
+    }
+
+    Raiz(req, res) {
+        try{
+            const { rad, index } = req.body
+            const resultado = Service.Raiz(rad, index);
+
+            res.status(200).send({ resultado })
+        }catch(e){
+            console.log(e);
+            res.status(500).send({ err: e.message});
+        }
+    }
+
+    Potencia(req, res) {
+        try{
+            const { base, expo } = req.body
+            const resultado = Service.Potencia(base, expo);
+
+            res.status(200).send({ resultado })
+        }catch(e){
+            console.log(e);
+            res.status(500).send({ err: e.message});
+        }
     }
 
 }
